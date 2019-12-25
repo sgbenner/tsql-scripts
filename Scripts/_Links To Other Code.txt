@@ -1,0 +1,5 @@
+Ola Hallengren Maintenance Solution:
+https://github.com/olahallengren/sql-server-maintenance-solution
+
+Adam Machanic sp_whoisactive:
+https://github.com/amachanic/sp_whoisactive

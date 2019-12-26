@@ -3,3 +3,6 @@ https://github.com/olahallengren/sql-server-maintenance-solution
 
 Adam Machanic sp_whoisactive:
 https://github.com/amachanic/sp_whoisactive
+
+Brent Ozar First Responder Kit:
+http://public.brentozar.com/FirstResponderKit.zip

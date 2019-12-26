@@ -5,8 +5,6 @@ SELECT    CASE
          ,SCHEMA_NAME(objects.schema_id) as schema_name
          ,objects.[name] AS object_name
          ,indexes.[name] AS index_name
-         ,SUBSTRING(column_names,1,LEN(column_names) - 1) AS index_columns
-         ,coalesce(SUBSTRING(included_column_names,1,LEN(included_column_names) - 1),'<none>') AS included_columns
          ,CASE
               WHEN indexes.[type] = 1 THEN 'Clustered index'
               WHEN indexes.[type] = 2 THEN 'Nonclustered unique index'
@@ -19,6 +17,8 @@ SELECT    CASE
                     WHEN indexes.is_primary_key = 'true' THEN ' (PK)'
                     ELSE ''
                 END AS index_type
+         ,SUBSTRING(column_names,1,LEN(column_names) - 1) AS index_columns
+         ,coalesce(SUBSTRING(included_column_names,1,LEN(included_column_names) - 1),'<none>') AS included_columns
          ,coalesce(indexes.filter_definition,'<none>') as filter_def
          ,indexes.is_primary_key
          ,indexes.is_unique

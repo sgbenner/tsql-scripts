@@ -6,3 +6,6 @@ https://github.com/amachanic/sp_whoisactive
 
 Brent Ozar First Responder Kit:
 http://public.brentozar.com/FirstResponderKit.zip
+
+Glen Berry SQL Diagnostic DMV Queries:
+https://www.sqlskills.com/blogs/glenn/category/dmv-queries/

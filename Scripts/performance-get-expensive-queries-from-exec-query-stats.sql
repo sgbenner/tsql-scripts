@@ -3,6 +3,7 @@
 SELECT TOP 50 CAST(query_stats.creation_time AS datetime2(0)) AS creation_time
             , CAST(query_stats.last_execution_time AS datetime2(0)) AS last_execution_time
             , query_stats.execution_count
+            , query_stats.execution_count / IIF(CAST(query_stats.creation_time AS date) = CAST(query_stats.last_execution_time AS date) , 1 , DATEDIFF(day , query_stats.creation_time , query_stats.last_execution_time)) AS execs_per_day_est
             , query_stats.total_worker_time / 1000 AS total_worker_time_ms
             , query_stats.last_worker_time / 1000 AS last_worker_time_ms
             , query_stats.min_worker_time / 1000 AS min_worker_time_ms
@@ -11,10 +12,7 @@ SELECT TOP 50 CAST(query_stats.creation_time AS datetime2(0)) AS creation_time
             , query_stats.last_rows
             , query_stats.min_rows
             , query_stats.max_rows
-            , CASE
-                  WHEN sql_text.objectid IS NOT NULL THEN concat('[' , DB_NAME(sql_text.dbid) , '].[' , OBJECT_SCHEMA_NAME(sql_text.objectid , sql_text.dbid) , '].[' , OBJECT_NAME(sql_text.objectid , sql_text.dbid) , ']')
-                  ELSE ''
-              END AS db_obj_name
+            , IIF(sql_text.objectid IS NOT NULL , concat('[' , DB_NAME(sql_text.dbid) , '].[' , OBJECT_SCHEMA_NAME(sql_text.objectid , sql_text.dbid) , '].[' , OBJECT_NAME(sql_text.objectid , sql_text.dbid) , ']') , '') AS db_obj_name
             , sql_text.text AS sql_text
             , sql_plan.query_plan
 FROM          sys.dm_exec_query_stats AS query_stats

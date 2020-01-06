@@ -9,3 +9,6 @@ http://public.brentozar.com/FirstResponderKit.zip
 
 Glen Berry SQL Diagnostic DMV Queries:
 https://www.sqlskills.com/blogs/glenn/category/dmv-queries/
+
+Red-Gate Free Tools (SQL Search, etc.)
+https://www.red-gate.com/products/free-tools

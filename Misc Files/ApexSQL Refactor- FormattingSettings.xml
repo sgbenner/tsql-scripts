@@ -396,10 +396,10 @@ sql = "</Prefix>
     <QueriesPlaceFromIndentType>Fixed</QueriesPlaceFromIndentType>
     <QueriesPlaceFromFixedIndentSize>0</QueriesPlaceFromFixedIndentSize>
     <QueriesPlaceWhereOnNewLine>true</QueriesPlaceWhereOnNewLine>
-    <QueriesPlaceWhereIndentType>AlignWithFrom</QueriesPlaceWhereIndentType>
+    <QueriesPlaceWhereIndentType>Fixed</QueriesPlaceWhereIndentType>
     <QueriesPlaceWhereFixedIndentSize>0</QueriesPlaceWhereFixedIndentSize>
     <QueriesPlaceOrderByOnNewLine>true</QueriesPlaceOrderByOnNewLine>
-    <QueriesPlaceOrderByIndentType>AlignWithWhere</QueriesPlaceOrderByIndentType>
+    <QueriesPlaceOrderByIndentType>Fixed</QueriesPlaceOrderByIndentType>
     <QueriesPlaceOrderByFixedIndentSize>0</QueriesPlaceOrderByFixedIndentSize>
     <QueriesPlaceSetOnNewLine>true</QueriesPlaceSetOnNewLine>
     <QueriesPlaceSetIndentType>Fixed</QueriesPlaceSetIndentType>
@@ -423,7 +423,7 @@ sql = "</Prefix>
     <JoinsPlaceJoinKeywordOnNewLine>true</JoinsPlaceJoinKeywordOnNewLine>
     <JoinsPlaceJoinKeywordIndent>false</JoinsPlaceJoinKeywordIndent>
     <JoinsPlaceJoinKeywordFixedIndentSize>5</JoinsPlaceJoinKeywordFixedIndentSize>
-    <JoinsJoinKeywordAlignment>AlignWithTable</JoinsJoinKeywordAlignment>
+    <JoinsJoinKeywordAlignment>AlignWithKeyword</JoinsJoinKeywordAlignment>
     <JoinsPlaceOnKeywordOnNewLine>false</JoinsPlaceOnKeywordOnNewLine>
     <JoinsPlaceOnKeywordIndentType>AlignWithBeginningOfPreviousKeyword</JoinsPlaceOnKeywordIndentType>
     <JoinsPlaceOnKeywordFixedIndent>false</JoinsPlaceOnKeywordFixedIndent>
@@ -437,16 +437,16 @@ sql = "</Prefix>
     <CaseKeywordCase>Upper</CaseKeywordCase>
     <CaseKeywordProperOffset>0</CaseKeywordProperOffset>
     <CaseModifyTypeCase>true</CaseModifyTypeCase>
-    <CaseTypeCase>Lower</CaseTypeCase>
+    <CaseTypeCase>Upper</CaseTypeCase>
     <CaseTypeProperOffset>0</CaseTypeProperOffset>
     <CaseModifySystemFunctionCase>true</CaseModifySystemFunctionCase>
     <CaseSystemFunctionCase>Upper</CaseSystemFunctionCase>
     <CaseSystemFunctionProperOffset>0</CaseSystemFunctionProperOffset>
     <CaseModifyIdentifierCase>false</CaseModifyIdentifierCase>
-    <CaseIdentifierCase>Lower</CaseIdentifierCase>
+    <CaseIdentifierCase>Proper</CaseIdentifierCase>
     <CaseIdentifierProperOffset>0</CaseIdentifierProperOffset>
     <CaseModifyVariableCase>false</CaseModifyVariableCase>
-    <CaseVariableCase>Lower</CaseVariableCase>
+    <CaseVariableCase>Upper</CaseVariableCase>
     <CaseVariableProperOffset>0</CaseVariableProperOffset>
     <DefinitionsPlaceBodyOnNewLine>true</DefinitionsPlaceBodyOnNewLine>
     <DefinitionsPlaceBodyOnNewLineIndent>true</DefinitionsPlaceBodyOnNewLineIndent>
@@ -462,7 +462,7 @@ sql = "</Prefix>
     <KeywordsPlaceElseOnNewLine>true</KeywordsPlaceElseOnNewLine>
     <KeywordsIndentElse>true</KeywordsIndentElse>
     <KeywordsIndentElseSpaceCount>4</KeywordsIndentElseSpaceCount>
-    <KeywordsIndentBeginEnd>false</KeywordsIndentBeginEnd>
+    <KeywordsIndentBeginEnd>true</KeywordsIndentBeginEnd>
     <KeywordsIndentWithinBeginEnd>true</KeywordsIndentWithinBeginEnd>
     <KeywordsIndentBeginEndSpaceCount>4</KeywordsIndentBeginEndSpaceCount>
     <KeywordsIndentWithinBeginEndSpaceCount>4</KeywordsIndentWithinBeginEndSpaceCount>

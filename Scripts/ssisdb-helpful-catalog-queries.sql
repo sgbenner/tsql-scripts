@@ -5,13 +5,13 @@ SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 -- all projects/packages, with last successful execution time, last failure time and avg execution time
 ****************************************/
 
-DECLARE @LastXDaysForMetrics int = 30;
+DECLARE @LastXDaysForMetrics INT = 30;
 
 SELECT    folders.name AS folder_name
         , projects.name AS project_name
         , packages.name AS package_name
-        , CAST(projects.created_time AS datetime2(0)) AS project_created_time
-        , CAST(projects.last_deployed_time AS datetime2(0)) AS project_last_deployed_time
+        , CAST(projects.created_time AS DATETIME2(0)) AS project_created_time
+        , CAST(projects.last_deployed_time AS DATETIME2(0)) AS project_last_deployed_time
           -- last execution info
         , last_execution_info.executed_as_name
         , CASE last_execution_info.STATUS
@@ -25,14 +25,14 @@ SELECT    folders.name AS folder_name
               WHEN 8 THEN 'stopping'
               WHEN 9 THEN 'completed'
           END AS last_exec_status -- The status of the operation. The possible values are created (1), running (2), canceled (3), failed (4), pending (5), ended unexpectedly (6), succeeded (7), stopping (8), and completed (9).
-        , CAST(last_execution_info.start_time AS datetime2(0)) AS last_exec_start_time
+        , CAST(last_execution_info.start_time AS DATETIME2(0)) AS last_exec_start_time
         , DATEDIFF(second , last_execution_info.start_time , last_execution_info.end_time) AS last_exec_runtime_S
         , execution_metrics.total_execs
         , execution_metrics.success_execs
         , execution_metrics.failure_execs
         , execution_metrics.avg_success_exec_time_S
 FROM      catalog.projects
-          INNER JOIN catalog.packages ON packages.project_id = projects.project_id
+INNER JOIN catalog.packages ON packages.project_id = projects.project_id
 INNER JOIN catalog.folders ON projects.folder_id = folders.folder_id
 OUTER APPLY
 (
@@ -81,8 +81,8 @@ SELECT folder_name
      , project_name
      , package_name
      , executed_as_name
-     , CAST(start_time AS datetime2(0)) AS start_time
-     , CAST(end_time AS datetime2(0)) AS end_time
+     , CAST(start_time AS DATETIME2(0)) AS start_time
+     , CAST(end_time AS DATETIME2(0)) AS end_time
      , DATEDIFF(second , start_time , GETDATE()) AS time_running_S
      , CASE executions.[status]
            WHEN 1 THEN 'created'
@@ -104,7 +104,7 @@ WHERE  executions.[status] IN(2 , 8); -- Running and Stopping
 ****************************************/
 -- Get Job Step Info
 
-DECLARE @Split varchar(1) = '\';
+DECLARE @Split VARCHAR(1) = '\';
 
 WITH cteJobStepInfo
      AS (SELECT    sysjobs.name AS job_name
@@ -113,7 +113,7 @@ WITH cteJobStepInfo
                  , sysjobsteps.command AS job_step_command
                  , SUBSTRING(sysjobsteps.command , SSISDBLocation + 7 , DtsxLocation - SSISDBLocation - 2) AS FolderProjectPackage
          FROM      msdb.dbo.sysjobs
-                   INNER JOIN
+         INNER JOIN
          (
              SELECT *
                   , CHARINDEX('SSISDB\' , sysjobsteps.command) AS SSISDBLocation
@@ -141,7 +141,7 @@ WITH cteJobStepInfo
                     ELSE NULL
                 END) AS package_name
      FROM   cteJobStepInfo
-            CROSS APPLY
+     CROSS APPLY
      (
          SELECT *
               , CASE ProjLevel
@@ -173,7 +173,7 @@ WITH cteJobStepInfo
           , cteJobStepInfoParsed.job_step_name
           , cteJobStepInfoParsed.job_enabled
      FROM   catalog.projects
-            INNER JOIN catalog.packages ON packages.project_id = projects.project_id
+     INNER JOIN catalog.packages ON packages.project_id = projects.project_id
      INNER JOIN catalog.folders ON projects.folder_id = folders.folder_id
      INNER JOIN cteJobStepInfoParsed ON folders.name = cteJobStepInfoParsed.folder_name
                                         AND projects.name = cteJobStepInfoParsed.project_name
@@ -189,9 +189,9 @@ SELECT folder_name
      , project_name
      , package_name
      , executed_as_name
-     , CAST(start_time AS datetime2(0)) AS start_time
-     , CAST(end_time AS datetime2(0)) AS end_time
-     , DATEDIFF(second , start_time , GETDATE()) AS time_running_S
+     , CAST(start_time AS DATETIME2(0)) AS start_time
+     , CAST(end_time AS DATETIME2(0)) AS end_time
+     , DATEDIFF(second , start_time , end_time) AS time_running_S
      , CASE executions.[status]
            WHEN 1 THEN 'created'
            WHEN 2 THEN 'running'
@@ -205,15 +205,16 @@ SELECT folder_name
        END AS last_exec_status -- The status of the operation. The possible values are created (1), running (2), canceled (3), failed (4), pending (5), ended unexpectedly (6), succeeded (7), stopping (8), and completed (9).
 -- select *
 FROM   [catalog].executions
-WHERE  executions.[status] IN(4 , 6); -- Running and Stopping
+WHERE  executions.[status] IN(4 , 6) -- Running and Stopping
+ORDER BY end_time DESC;
 
 /****************************************
 -- All messages for last Package Execution
 ****************************************/
 
-DECLARE @FolderName  varchar(255) = 'GSLDataPushToTier'
-      , @ProjectName varchar(255) = 'GSLDataPushToTier'
-      , @PackageName varchar(255) = 'GSLUpdatetoolsToTier.dtsx';
+DECLARE @FolderName  VARCHAR(255) = 'Claim'
+      , @ProjectName VARCHAR(255) = 'Claim'
+      , @PackageName VARCHAR(255) = 'MajescoClaim.dtsx';
 
 SELECT    executions.execution_id
         , executions.folder_name
@@ -265,3 +266,52 @@ INNER JOIN catalog.operations ON execution_id = operation_id
 INNER JOIN catalog.operation_messages ON operations.operation_id = operation_messages.operation_id
 ORDER BY message_time
        , operation_message_id;
+
+/****************************************
+-- All Error and Task Failed Messages, sorted by most recent failures
+****************************************/
+
+SELECT executions.execution_id
+     , executions.folder_name
+     , executions.project_name
+     , executions.package_name
+     , executions.environment_folder_name AS env_folder
+     , executions.environment_name AS env_name
+     , executions.executed_as_name
+     , executions.server_name
+     , CASE operation_messages.message_source_type
+           WHEN 10 THEN 'Entry APIs, such as T-SQL and CLR Stored procedures'
+           WHEN 20 THEN 'External process used to run package (ISServerExec.exe)'
+           WHEN 30 THEN 'Package-level objects'
+           WHEN 40 THEN 'Control Flow tasks'
+           WHEN 50 THEN 'Control Flow containers'
+           WHEN 60 THEN 'Data Flow task'
+           ELSE ''
+       END AS message_source
+     , CASE operation_messages.message_type
+           WHEN-1 THEN 'Unknown'
+           WHEN 120 THEN 'Error'
+           WHEN 110 THEN 'Warning'
+           WHEN 70 THEN 'Information'
+           WHEN 10 THEN 'Pre-validate'
+           WHEN 20 THEN 'Post-validate'
+           WHEN 30 THEN 'Pre-execute'
+           WHEN 40 THEN 'Post-execute'
+           WHEN 60 THEN 'Progress'
+           WHEN 50 THEN 'StatusChange'
+           WHEN 100 THEN 'QueryCancel'
+           WHEN 130 THEN 'TaskFailed'
+           WHEN 90 THEN 'Diagnostic'
+           WHEN 200 THEN 'Custom'
+           WHEN 140 THEN 'DiagnosticEx'
+           ELSE ''
+       END AS message_type
+     , cast(operation_messages.message_time as datetime2(3)) as message_time
+     , operation_messages.message
+FROM   catalog.executions
+INNER JOIN catalog.operations ON execution_id = operation_id
+INNER JOIN catalog.operation_messages ON operations.operation_id = operation_messages.operation_id
+WHERE  operation_messages.message_type IN(120 , 130) -- Error, TaskFailed
+	and message_time >= getdate() - 30 --- just showing last 30 days to keep result set a little smaller
+ORDER BY execution_id DESC
+       , message_time;

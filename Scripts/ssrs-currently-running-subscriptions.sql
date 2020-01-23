@@ -9,9 +9,9 @@ SELECT Catalog.Name AS SubscriptionName
      , Subscriptions.Description
      , COUNT(Notifications.ReportID) AS TotalReportsPending
      , COUNT(DISTINCT Notifications.ActivationID) AS TotalTimesRan
-FROM Subscriptions
-LEFT JOIN Catalog ON Catalog.ItemID = Subscriptions.Report_OID
-LEFT JOIN Notifications ON Catalog.ItemID = Notifications.ReportID
+FROM dbo.Subscriptions
+LEFT JOIN dbo.Catalog ON Catalog.ItemID = Subscriptions.Report_OID
+LEFT JOIN dbo.Notifications ON Catalog.ItemID = Notifications.ReportID
 WHERE Subscriptions.LastStatus NOT LIKE 'Done:%'
       AND Subscriptions.LastStatus NOT LIKE 'Mail sent%'
       AND Subscriptions.LastStatus NOT LIKE 'New Subscriptio%'

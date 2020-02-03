@@ -271,9 +271,9 @@ sql = "</Prefix>
         <DontFormatIfNested>false</DontFormatIfNested>
         <OpeningParenthesisMoveToNewLineOnOff>true</OpeningParenthesisMoveToNewLineOnOff>
         <OpeningParenthesisNewLineIndentType>Fixed</OpeningParenthesisNewLineIndentType>
-        <OpeningParenthesisMoveToNewLineIndentSize>0</OpeningParenthesisMoveToNewLineIndentSize>
+        <OpeningParenthesisMoveToNewLineIndentSize>6</OpeningParenthesisMoveToNewLineIndentSize>
         <ClosingParenthesisMoveToNewLineOnOff>true</ClosingParenthesisMoveToNewLineOnOff>
-        <ClosingParenthesisNewLineIndentType>Fixed</ClosingParenthesisNewLineIndentType>
+        <ClosingParenthesisNewLineIndentType>IndentWithKeyword</ClosingParenthesisNewLineIndentType>
         <ClosingParenthesisMoveToNewLineIndentSize>0</ClosingParenthesisMoveToNewLineIndentSize>
         <CodeBetweenParenthesisMoveToNewLineOnOff>true</CodeBetweenParenthesisMoveToNewLineOnOff>
         <CodeBetweenParenthesisNewLineIndentType>Fixed</CodeBetweenParenthesisNewLineIndentType>
@@ -330,7 +330,7 @@ sql = "</Prefix>
     </ParenthesisOptions>
     <GeneralSpaceCountInTab>5</GeneralSpaceCountInTab>
     <GeneralReplaceTabsWithSpaces>false</GeneralReplaceTabsWithSpaces>
-    <SmartIndent>true</SmartIndent>
+    <SmartIndent>false</SmartIndent>
     <GeneralIndentType>Spaces</GeneralIndentType>
     <GeneralAddSpacesAroundAssignmentOperators>true</GeneralAddSpacesAroundAssignmentOperators>
     <ExpressionsAddSpacesAroundArithmeticOperators>true</ExpressionsAddSpacesAroundArithmeticOperators>
@@ -356,7 +356,7 @@ sql = "</Prefix>
     <SqlTypesIndenSize>1</SqlTypesIndenSize>
     <IsUseCommentsOptions>false</IsUseCommentsOptions>
     <CommentsInsertLineBeforeBlockComment>true</CommentsInsertLineBeforeBlockComment>
-    <CommentsInsertLineAfterBlockComment>true</CommentsInsertLineAfterBlockComment>
+    <CommentsInsertLineAfterBlockComment>false</CommentsInsertLineAfterBlockComment>
     <CommentsAddRowOfCharacterToFirstLine>true</CommentsAddRowOfCharacterToFirstLine>
     <CommentsAddRowToFirstLineCharacter>42</CommentsAddRowToFirstLineCharacter>
     <CommentsAddRowOfCharacterToLastLine>true</CommentsAddRowOfCharacterToLastLine>
@@ -396,10 +396,10 @@ sql = "</Prefix>
     <QueriesPlaceFromIndentType>Fixed</QueriesPlaceFromIndentType>
     <QueriesPlaceFromFixedIndentSize>0</QueriesPlaceFromFixedIndentSize>
     <QueriesPlaceWhereOnNewLine>true</QueriesPlaceWhereOnNewLine>
-    <QueriesPlaceWhereIndentType>Fixed</QueriesPlaceWhereIndentType>
+    <QueriesPlaceWhereIndentType>AlignWithFrom</QueriesPlaceWhereIndentType>
     <QueriesPlaceWhereFixedIndentSize>0</QueriesPlaceWhereFixedIndentSize>
     <QueriesPlaceOrderByOnNewLine>true</QueriesPlaceOrderByOnNewLine>
-    <QueriesPlaceOrderByIndentType>Fixed</QueriesPlaceOrderByIndentType>
+    <QueriesPlaceOrderByIndentType>AlignWithWhere</QueriesPlaceOrderByIndentType>
     <QueriesPlaceOrderByFixedIndentSize>0</QueriesPlaceOrderByFixedIndentSize>
     <QueriesPlaceSetOnNewLine>true</QueriesPlaceSetOnNewLine>
     <QueriesPlaceSetIndentType>Fixed</QueriesPlaceSetIndentType>

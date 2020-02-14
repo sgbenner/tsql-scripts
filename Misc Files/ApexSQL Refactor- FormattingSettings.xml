@@ -117,7 +117,7 @@ sql = "</Prefix>
         <FirstItemIndentType>AlignWithKeyword</FirstItemIndentType>
         <FirstItemIndentSize>5</FirstItemIndentSize>
         <PlaceEachItemOnSeparateLine>true</PlaceEachItemOnSeparateLine>
-        <CommaPosition>AfterItem</CommaPosition>
+        <CommaPosition>BeforeItem</CommaPosition>
         <DoNotIndentComma>false</DoNotIndentComma>
       </ListFormattingOptions>
       <ListFormattingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="Parameters">
@@ -144,7 +144,7 @@ sql = "</Prefix>
         <FirstItemIndentType>AlignWithKeyword</FirstItemIndentType>
         <FirstItemIndentSize>3</FirstItemIndentSize>
         <PlaceEachItemOnSeparateLine>false</PlaceEachItemOnSeparateLine>
-        <CommaPosition>AfterItem</CommaPosition>
+        <CommaPosition>BeforeItem</CommaPosition>
         <DoNotIndentComma>false</DoNotIndentComma>
       </ListFormattingOptions>
       <ListFormattingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="Assignments">
@@ -162,7 +162,7 @@ sql = "</Prefix>
         <FirstItemIndentType>AlignWithKeyword</FirstItemIndentType>
         <FirstItemIndentSize>3</FirstItemIndentSize>
         <PlaceEachItemOnSeparateLine>true</PlaceEachItemOnSeparateLine>
-        <CommaPosition>AfterItem</CommaPosition>
+        <CommaPosition>BeforeItem</CommaPosition>
         <DoNotIndentComma>false</DoNotIndentComma>
       </ListFormattingOptions>
     </ListOptions>
@@ -297,16 +297,16 @@ sql = "</Prefix>
       </ParenthesisTypeOptions>
       <ParenthesisTypeOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="Parameters">
         <FormatParenthesisOnOff>true</FormatParenthesisOnOff>
-        <AddSpaceInsideParenthesis>false</AddSpaceInsideParenthesis>
+        <AddSpaceInsideParenthesis>true</AddSpaceInsideParenthesis>
         <AddSpaceOutsideParenthesis>true</AddSpaceOutsideParenthesis>
-        <DontMoveToNewLineIfNoNewLinesInBetween>true</DontMoveToNewLineIfNoNewLinesInBetween>
+        <DontMoveToNewLineIfNoNewLinesInBetween>false</DontMoveToNewLineIfNoNewLinesInBetween>
         <DontFormatIfNested>false</DontFormatIfNested>
         <OpeningParenthesisMoveToNewLineOnOff>true</OpeningParenthesisMoveToNewLineOnOff>
         <OpeningParenthesisNewLineIndentType>Fixed</OpeningParenthesisNewLineIndentType>
         <OpeningParenthesisMoveToNewLineIndentSize>0</OpeningParenthesisMoveToNewLineIndentSize>
         <ClosingParenthesisMoveToNewLineOnOff>true</ClosingParenthesisMoveToNewLineOnOff>
-        <ClosingParenthesisNewLineIndentType>Fixed</ClosingParenthesisNewLineIndentType>
-        <ClosingParenthesisMoveToNewLineIndentSize>0</ClosingParenthesisMoveToNewLineIndentSize>
+        <ClosingParenthesisNewLineIndentType>AlignWithOpeningParenthesis</ClosingParenthesisNewLineIndentType>
+        <ClosingParenthesisMoveToNewLineIndentSize>3</ClosingParenthesisMoveToNewLineIndentSize>
         <CodeBetweenParenthesisMoveToNewLineOnOff>false</CodeBetweenParenthesisMoveToNewLineOnOff>
         <CodeBetweenParenthesisNewLineIndentType>Fixed</CodeBetweenParenthesisNewLineIndentType>
         <CodeBetweenParenthesisMoveToNewLineIndentSize>4</CodeBetweenParenthesisMoveToNewLineIndentSize>

@@ -122,11 +122,11 @@ sql = "</Prefix>
       </ListFormattingOptions>
       <ListFormattingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="Parameters">
         <FormatList>true</FormatList>
-        <PlaceListOnNewLine>false</PlaceListOnNewLine>
-        <FirstItemIndentType>AlignWithKeyword</FirstItemIndentType>
+        <PlaceListOnNewLine>true</PlaceListOnNewLine>
+        <FirstItemIndentType>Fixed</FirstItemIndentType>
         <FirstItemIndentSize>5</FirstItemIndentSize>
         <PlaceEachItemOnSeparateLine>true</PlaceEachItemOnSeparateLine>
-        <CommaPosition>AfterItem</CommaPosition>
+        <CommaPosition>BeforeItem</CommaPosition>
         <DoNotIndentComma>false</DoNotIndentComma>
       </ListFormattingOptions>
       <ListFormattingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="Variables">
@@ -271,9 +271,9 @@ sql = "</Prefix>
         <DontFormatIfNested>false</DontFormatIfNested>
         <OpeningParenthesisMoveToNewLineOnOff>true</OpeningParenthesisMoveToNewLineOnOff>
         <OpeningParenthesisNewLineIndentType>Fixed</OpeningParenthesisNewLineIndentType>
-        <OpeningParenthesisMoveToNewLineIndentSize>6</OpeningParenthesisMoveToNewLineIndentSize>
+        <OpeningParenthesisMoveToNewLineIndentSize>0</OpeningParenthesisMoveToNewLineIndentSize>
         <ClosingParenthesisMoveToNewLineOnOff>true</ClosingParenthesisMoveToNewLineOnOff>
-        <ClosingParenthesisNewLineIndentType>IndentWithKeyword</ClosingParenthesisNewLineIndentType>
+        <ClosingParenthesisNewLineIndentType>Fixed</ClosingParenthesisNewLineIndentType>
         <ClosingParenthesisMoveToNewLineIndentSize>0</ClosingParenthesisMoveToNewLineIndentSize>
         <CodeBetweenParenthesisMoveToNewLineOnOff>true</CodeBetweenParenthesisMoveToNewLineOnOff>
         <CodeBetweenParenthesisNewLineIndentType>Fixed</CodeBetweenParenthesisNewLineIndentType>
@@ -298,7 +298,7 @@ sql = "</Prefix>
       <ParenthesisTypeOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="Parameters">
         <FormatParenthesisOnOff>true</FormatParenthesisOnOff>
         <AddSpaceInsideParenthesis>false</AddSpaceInsideParenthesis>
-        <AddSpaceOutsideParenthesis>false</AddSpaceOutsideParenthesis>
+        <AddSpaceOutsideParenthesis>true</AddSpaceOutsideParenthesis>
         <DontMoveToNewLineIfNoNewLinesInBetween>true</DontMoveToNewLineIfNoNewLinesInBetween>
         <DontFormatIfNested>false</DontFormatIfNested>
         <OpeningParenthesisMoveToNewLineOnOff>true</OpeningParenthesisMoveToNewLineOnOff>

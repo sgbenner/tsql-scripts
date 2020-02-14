@@ -153,7 +153,7 @@ sql = "</Prefix>
         <FirstItemIndentType>AlignWithKeyword</FirstItemIndentType>
         <FirstItemIndentSize>3</FirstItemIndentSize>
         <PlaceEachItemOnSeparateLine>true</PlaceEachItemOnSeparateLine>
-        <CommaPosition>AfterItem</CommaPosition>
+        <CommaPosition>BeforeItem</CommaPosition>
         <DoNotIndentComma>false</DoNotIndentComma>
       </ListFormattingOptions>
       <ListFormattingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="Tables">
